@@ -11,7 +11,7 @@
         <%@ include file="/import/head.jsp"%>
 
     <form ng-submit="uploadFile();">
-        <div hidden="">
+        <div>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" ng-model="form.name" required="">
@@ -80,11 +80,10 @@
             </div>        
         </div><!--End of hidden div-->
 
-        {{form}}
 
         <input type="file" file-model="myFile"/>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">{{status}}</button>
     </form>
 
 
@@ -119,9 +118,10 @@
                             groupShow: "this is group show",
                             collection: "this is collection"
                         };
-
+                        $scope.status = "Upload";
                         $scope.uploadFile = function () {
                             console.log("Uploading..");
+                            $scope.status = "Processing...";
                             var file = $scope.myFile;
                             var fd = new FormData();
                             fd.append('image', file);
@@ -134,7 +134,8 @@
                                 $scope.form.photo = file.name;
                                 uploadData();
                             }, function errorCallback(response) {
-                                console.log("Error");
+                                alert("Error While Uploading IMAGE..");
+                                $scope.status = "Upload";
                             });
                         }
 
@@ -144,9 +145,10 @@
                                 url: "addArtist_Action.jsp",
                                 params: $scope.form
                             }).then(function successCallback(response) {
-                                console.log("Ok Success "+response.data);
+                                window.location.assign("listArtist.jsp");
                             }, function errorCallback(response) {
-                                console.log("Error Data");
+                                alert("Error While Uploading DATA..");
+                                $scope.status = "Upload";
                             });
                         }
 

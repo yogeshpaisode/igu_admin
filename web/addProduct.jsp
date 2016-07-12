@@ -31,7 +31,7 @@
             %>
         </select>
 
-        <div hidden="">
+        <div>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" ng-model="form.name" required="">
@@ -60,12 +60,10 @@
 
         </div><!--End of hidden div-->
 
-        {{form}}
-
         <input type="file" file-model="feature_Img"/>
         <input type="file" file-model="cart_Img"/>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+       <button type="submit" class="btn btn-default">{{status}}</button>
     </form>
 
 
@@ -95,8 +93,10 @@
                             price: "5000"
                         };
 
+                        $scope.status="Upload";
                         $scope.uploadFile = function () {
-                            console.log("Uploading Feature_Img..");
+                            console.log("Uploading Feature_Img..");                            
+                             $scope.status = "Processing...";
                             var file = $scope.feature_Img;
                             var fd = new FormData();
                             fd.append('image', file);
@@ -108,8 +108,9 @@
                             }).then(function successCallback(response) {
                                 $scope.form.feature_Img = file.name;
                                 uploadCartFile();
-                            }, function errorCallback(response) {
-                                console.log("Error");
+                            }, function errorCallback(response) {                                
+                                 alert("Error While Uploading FEATURE IMAGE..");
+                                 $scope.status = "Upload";
                             });
                         }
 
@@ -127,11 +128,10 @@
                                 $scope.form.cart_Img = file.name;
                                 uploadData();
                             }, function errorCallback(response) {
-                                console.log("Error");
+                                 alert("Error While Uploading CART IMAGE..");
+                                 $scope.status = "Upload";
                             });
                         }
-
-
 
                         var uploadData = function () {
                             $http({
@@ -139,9 +139,10 @@
                                 url: "addProduct_Action.jsp",
                                 params: $scope.form
                             }).then(function successCallback(response) {
-                                console.log("Ok Success " + response.data);
+                               window.location.assign("listProduct.jsp");
                             }, function errorCallback(response) {
-                                console.log("Error Data");
+                                 alert("Error While Uploading DATA..");
+                                 $scope.status = "Upload";
                             });
                         }
 

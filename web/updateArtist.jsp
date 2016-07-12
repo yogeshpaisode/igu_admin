@@ -95,11 +95,9 @@
 
         </div><!--End of hidden div-->
 
-        {{form}}
-
         <input type="file" file-model="myFile"/>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">{{status}}</button>
     </form>
 
 
@@ -135,8 +133,11 @@
                             groupShow: "<%= a.getGroupShow()%>",
                             collection: "<%= a.getCollection()%>"
                         };
+
+                        $scope.status = "Upload";
                         $scope.uploadFile = function () {
                             console.log("Uploading..");
+                            $scope.status = "Processing...";
                             if (angular.isUndefined($scope.myFile)) {
                                 $scope.form.photo = "null";
                                 uploadData();
@@ -153,7 +154,8 @@
                                     $scope.form.photo = file.name;
                                     uploadData();
                                 }, function errorCallback(response) {
-                                    console.log("Error");
+                                    alert("Error While Uploading IMAGE..");
+                                    $scope.status = "Upload";
                                 });
                             }
                         }
@@ -164,9 +166,10 @@
                                 url: "updateArtist_Action.jsp",
                                 params: $scope.form
                             }).then(function successCallback(response) {
-                                console.log("Ok Success " + response.data);
+                                window.location.assign("listArtist.jsp");
                             }, function errorCallback(response) {
-                                console.log("Error Data");
+                                alert("Error While Uploading DATA..");
+                                $scope.status = "Upload";
                             });
                         }
 

@@ -66,12 +66,10 @@
             <input type="text" ng-model="form.id" hidden="">
         </div><!--End of hidden div-->
 
-        {{form}}
-
         <input type="file" file-model="feature_Img"/>
         <input type="file" file-model="cart_Img"/>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+       <button type="submit" class="btn btn-default">{{status}}</button>
     </form>
 
 
@@ -102,7 +100,11 @@
                             price: "<%= p.getPrice()%>",
                             artistId:"<%=p.getArtistId()%>"
                         };
+                        
+                        $scope.status="Upload";
                         $scope.uploadFile = function () {
+                            
+                             $scope.status = "Processing...";
                             if (angular.isUndefined($scope.feature_Img)) {
                                 $scope.form.feature_Img = "null";
                                 uploadCartFile();
@@ -119,7 +121,8 @@
                                     $scope.form.feature_Img = file.name;
                                     uploadCartFile();
                                 }, function errorCallback(response) {
-                                    console.log("Error");
+                                   alert("Error While Uploading FEATURE IMAGE..");
+                                   $scope.status = "Upload";
                                 });
                             }
 
@@ -143,7 +146,8 @@
                                     $scope.form.cart_Img = file.name;
                                     uploadData();
                                 }, function errorCallback(response) {
-                                    console.log("Error");
+                                     alert("Error While Uploading CART IMAGE..");
+                                     $scope.status = "Upload";
                                 });
                             }
                         }
@@ -155,9 +159,10 @@
                                 url: "updateProduct_Action.jsp",
                                 params: $scope.form
                             }).then(function successCallback(response) {
-                                console.log("Ok Success " + response.data);
+                               window.location.assign("listProduct.jsp");
                             }, function errorCallback(response) {
-                                console.log("Error Data");
+                                 alert("Error While Uploading DATA..");
+                                 $scope.status = "Upload";
                             });
                         }
 
