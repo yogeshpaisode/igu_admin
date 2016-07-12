@@ -147,7 +147,7 @@
                                 fd.append('image', file);
                                 $http({
                                     method: 'POST',
-                                    url: "http://upchar.esy.es/upload.php",
+                                    url: "<%= url %>",
                                     headers: {'Content-Type': undefined},
                                     data: fd
                                 }).then(function successCallback(response) {

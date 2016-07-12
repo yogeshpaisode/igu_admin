@@ -8,9 +8,8 @@
 <%@page import="java.net.URLConnection"%>
 <%@page import="java.net.URL"%>
 <%
-    //http://upchar.esy.es/truncate.php
-
-    URL url = new URL("http://upchar.esy.es/truncate.php");
+    String truncate_url = "http://upchar.esy.es/truncate.php";
+    URL url = new URL(truncate_url);
     URLConnection yc = url.openConnection();
     BufferedReader in = new BufferedReader(
             new InputStreamReader(
