@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 12, 2016 10:03:56 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.hibconfig.Artist" table="artist" catalog="iguanast_live" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="exibitionId" type="java.lang.Integer">
+            <column name="exibition_id" />
+        </property>
+        <property name="photo" type="string">
+            <column name="photo" length="65535" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="65535" />
+        </property>
+        <property name="contact" type="string">
+            <column name="contact" length="65535" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="65535" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="65535" />
+        </property>
+        <property name="dob" type="string">
+            <column name="dob" length="65535" />
+        </property>
+        <property name="summary" type="string">
+            <column name="summary" length="65535" />
+        </property>
+        <property name="facebook" type="string">
+            <column name="facebook" length="65535" />
+        </property>
+        <property name="twitter" type="string">
+            <column name="twitter" length="65535" />
+        </property>
+        <property name="google" type="string">
+            <column name="google" length="65535" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="65535" />
+        </property>
+        <property name="qualification" type="string">
+            <column name="qualification" length="65535" />
+        </property>
+        <property name="award" type="string">
+            <column name="award" length="65535" />
+        </property>
+        <property name="solo" type="string">
+            <column name="solo" length="65535" />
+        </property>
+        <property name="groupShow" type="string">
+            <column name="groupShow" length="65535" />
+        </property>
+        <property name="collection" type="string">
+            <column name="collection" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>
