@@ -1,3 +1,5 @@
+<%@page import="org.hibernate.Criteria"%>
+<%@page import="org.hibernate.Transaction"%>
 <%@page import="org.hibernate.Query"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="org.hibernate.SessionFactory"%>
@@ -6,7 +8,7 @@
 <%@page import="java.net.URLConnection"%>
 <%@page import="java.net.URL"%>
 <%
-//http://upchar.esy.es/truncate.php
+    //http://upchar.esy.es/truncate.php
 
     URL url = new URL("http://upchar.esy.es/truncate.php");
     URLConnection yc = url.openConnection();
@@ -19,9 +21,9 @@
         out.println(inputLine);
     }
     in.close();
-
     SessionFactory sessionFactory = com.hibconfig.HibernateUtil.getSessionFactory();
     Session hibsession = sessionFactory.openSession();
     hibsession.createQuery("delete from Product").executeUpdate();
-    
+    hibsession.close();
+    out.print("Success...");
 %>
