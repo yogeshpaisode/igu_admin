@@ -26,4 +26,5 @@
     hibsession.createQuery("delete from Product").executeUpdate();
     hibsession.close();
     out.print("Success...");
+    response.sendRedirect("listProduct.jsp");
 %>
