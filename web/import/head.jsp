@@ -5,7 +5,7 @@
 <%
     String url = "http://upchar.esy.es/upload.php";
     try {
-        session.getAttribute("isvalid").toString();
+        String data = session.getAttribute("isvalid").toString();
     } catch (Exception e) {
         response.sendRedirect("index.jsp");
     }
@@ -35,7 +35,7 @@
                     <li><a href="listProduct.jsp">List Product</a></li>
                     <li><a href="newExhibition.jsp">New Exhibition</a></li>
                 </ul>
-                
+
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="logout_Action.jsp">Log Out</a></li>
                 </ul>
