@@ -19,7 +19,7 @@
             Session hibsession = sessionFactory.openSession();
             Criteria cr = hibsession.createCriteria(com.hibconfig.Artist.class);
             cr.add(Restrictions.eq("id", Integer.parseInt(request.getParameter("id").toString())));
-            com.hibconfig.Artist a=(com.hibconfig.Artist)cr.list().get(0);
+            com.hibconfig.Artist a = (com.hibconfig.Artist) cr.list().get(0);
         %>
 
     <form ng-submit="uploadFile();">
@@ -90,9 +90,9 @@
                 <label>Collection</label>
                 <textarea ng-model="form.collection" class="form-control" required></textarea>
             </div>      
-            
+
             <input type="text" ng-model="form.id" hidden="">
-            
+
         </div><!--End of hidden div-->
 
         {{form}}
@@ -120,30 +120,28 @@
                         };
                     }])
                 .controller("indexCtr", ["$scope", "$http", function ($scope, $http) {
-                        $scope.myFile = null;
                         $scope.form = {
                             id: "<%= a.getId()%>",
-                            name: "<%= a.getName() %>",
-                            contact: "<%= a.getContact() %>",
-                            address: "<%= a.getAddress() %>",
-                            gender: "<%= a.getGender() %>",
-                            dob: "<%= a.getDob() %>",
-                            summary: "<%= a.getSummary() %>",
-                            facebook: "<%= a.getFacebook() %>",
-                            qualification: "<%= a.getQualification() %>",
-                            award: "<%= a.getAward() %>",
-                            solo: "<%= a.getSolo() %>",
-                            groupShow: "<%= a.getGroupShow() %>",
-                            collection: "<%= a.getCollection() %>"
+                            name: "<%= a.getName()%>",
+                            contact: "<%= a.getContact()%>",
+                            address: "<%= a.getAddress()%>",
+                            gender: "<%= a.getGender()%>",
+                            dob: "<%= a.getDob()%>",
+                            summary: "<%= a.getSummary()%>",
+                            facebook: "<%= a.getFacebook()%>",
+                            qualification: "<%= a.getQualification()%>",
+                            award: "<%= a.getAward()%>",
+                            solo: "<%= a.getSolo()%>",
+                            groupShow: "<%= a.getGroupShow()%>",
+                            collection: "<%= a.getCollection()%>"
                         };
-
                         $scope.uploadFile = function () {
                             console.log("Uploading..");
-                            var file = $scope.myFile;
-                            if (file == null) {
+                            if (angular.isUndefined($scope.myFile)) {
                                 $scope.form.photo = "null";
                                 uploadData();
                             } else {
+                                var file = $scope.myFile;
                                 var fd = new FormData();
                                 fd.append('image', file);
                                 $http({
