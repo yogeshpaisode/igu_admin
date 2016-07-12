@@ -36,7 +36,7 @@
             %>
         </select>
 
-        <div>
+        <div hidden>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" ng-model="form.name" required="">
@@ -99,12 +99,11 @@
                             medium: "<%= p.getMedium()%>",
                             condition_p: "<%= p.getConditionP()%>",
                             sold_By: "<%= p.getSoldBy()%>",
-                            price: "<%= p.getPrice()%>"
+                            price: "<%= p.getPrice()%>",
+                            artistId:"<%=p.getArtistId()%>"
                         };
-                        $scope.form.feature_Img = null;
-                        $scope.form.cart_Img=null;
                         $scope.uploadFile = function () {
-                            if ($scope.feature_Img == null) {
+                            if (angular.isUndefined($scope.feature_Img)) {
                                 $scope.form.feature_Img = "null";
                                 uploadCartFile();
                             } else {
@@ -128,7 +127,7 @@
 
                         var uploadCartFile = function () {
                             console.log("Uploading cart_Img..");
-                            if ($scope.cart_Img == null) {
+                            if (angular.isUndefined($scope.cart_Img)) {
                                 $scope.form.cart_Img = "null";
                                 uploadData();
                             } else {
@@ -148,8 +147,6 @@
                                 });
                             }
                         }
-
-
 
                         var uploadData = function () {
                             console.log("Updating Data..");
