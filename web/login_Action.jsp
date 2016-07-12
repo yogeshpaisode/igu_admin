@@ -1,6 +1,6 @@
 <%
     String pass = request.getParameter("pass").toString();
-    if (pass.equals("yogesh")) {
+    if (pass.equals("iguana@321studio")) {
         response.sendRedirect("listProduct.jsp");
         session.setAttribute("isvalid","yes");
     } else {
