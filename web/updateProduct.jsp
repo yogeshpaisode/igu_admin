@@ -36,7 +36,7 @@
             %>
         </select>
 
-        <div hidden="">
+        <div>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" ng-model="form.name" required="">
@@ -155,7 +155,7 @@
                             console.log("Updating Data..");
                             $http({
                                 method: 'GET',
-                                url: "addProduct_Action.jsp",
+                                url: "updateProduct_Action.jsp",
                                 params: $scope.form
                             }).then(function successCallback(response) {
                                 console.log("Ok Success " + response.data);
