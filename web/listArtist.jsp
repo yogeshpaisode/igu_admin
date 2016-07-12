@@ -42,7 +42,7 @@
                 <td><%= a.getName()  %></td>
                 <td><%= a.getContact()%></td>
                 <td><a href="updateArtist.jsp?id=<%=a.getId()%>"><button>Update</button></a></td>
-                <td><a href="deleyeArtist.jsp?id=<%=a.getId()%>"><button>Delete</button></a></td>
+                <td><a href="delete.jsp?id=<%=a.getId()%>&table=artist"><button>Delete</button></a></td>
             </tr>
             <%
                 }

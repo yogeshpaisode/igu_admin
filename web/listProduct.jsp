@@ -42,7 +42,7 @@
                 <td><%= a.getName()  %></td>
                 <td><%= a.getSizeP()%></td>
                 <td><a href="updateProduct.jsp?id=<%=a.getId()%>"><button>Update</button></a></td>
-                <td><a href="deleyeProduct.jsp?id=<%=a.getId()%>"><button>Delete</button></a></td>
+                <td><a href="delete.jsp?id=<%=a.getId()%>&table=product"><button>Delete</button></a></td>
             </tr>
             <%
                 }
